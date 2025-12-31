@@ -125,6 +125,7 @@ public class juego {
     		return false;
 	}
 	
+	//Ayuda de Gemini
 	public boolean hayGanador() {
 	    if (comprobarFila() || comprobarColumna() || comprobarID ()|| comprobarDI()) {
 	        System.out.println("¡PARTIDA FINALIZADA!");
@@ -141,15 +142,25 @@ public class juego {
 	    hayGanador();
 	}
 	
-	public void Turno() {
+	public boolean Turno() {
 		System.out.println("---------------------------");
 		mostrarTablero();
 		ponerFichaRoja();
+		//Ayuda de Gemini el if
+		if (hayGanador()) {
+	        mostrarTablero(); // Mostramos cómo quedó
+	        return true;      // Devolvemos true para avisar que el juego terminó
+	    }
 	    realizarComprobaciones();
 	    ponerFichaAmarilla();
+	    if (hayGanador()) {
+	        mostrarTablero(); // Mostramos cómo quedó
+	        return true;      // Devolvemos true para avisar que el juego terminó
+	    }
 	    realizarComprobaciones();
 	    hayGanador();
 	    System.out.println("---------------------------");
+	    return false; // Devolvemos false porque nadie ha ganado todavía
 	}
 	
 	public static void main(String[] args) {
@@ -157,8 +168,11 @@ public class juego {
 	    juego.tablero(2); // Tablero de 2x2
 	    
 	    while (true) {
-	    	juego.Turno();
-		    juego.Turno();
+	    	// Ejecutamos el turno. Si devuelve true, hacemos break para salir
+	    	//Ayuda de Gemini el if
+	    	if (juego.Turno()) {
+	            break; 
+	        }
 	    }
 	    
 
