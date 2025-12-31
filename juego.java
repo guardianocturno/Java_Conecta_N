@@ -164,8 +164,11 @@ public class juego {
 	}
 	
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 	    juego juego = new juego();
-	    juego.tablero(2); // Tablero de 2x2
+	    System.out.print("De cuanto quieres que sea el tablero: ");
+		int n = sc.nextInt();
+	    juego.tablero(n); // Tablero de 2x2
 	    
 	    while (true) {
 	    	// Ejecutamos el turno. Si devuelve true, hacemos break para salir
